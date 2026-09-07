@@ -1,0 +1,22 @@
+{
+  "listen_host": "0.0.0.0",
+  "listen_port": 8080,
+  "strategy": "round_robin",
+  "backends": [
+    "http://127.0.0.1:9001",
+    "http://127.0.0.1:9002",
+    "http://127.0.0.1:9003"
+  ],
+  "request_timeout_seconds": 10.0,
+  "retries": 1,
+  "retry_statuses": [502, 503, 504],
+  "health_check_interval_seconds": 5.0,
+  "health_check_path": "/health",
+  "health_check_timeout_seconds": 2.0,
+  "health_failure_threshold": 2,
+  "health_success_threshold": 1,
+  "passive_failure_threshold": 2,
+  "admin_status_enabled": true,
+  "admin_status_path": "/_lb/status",
+  "max_request_body_bytes": 10485760
+}

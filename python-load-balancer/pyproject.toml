@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "async-python-load-balancer"
+version = "1.0.0"
+description = "An asynchronous HTTP reverse-proxy load balancer written in Python"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "aiohttp>=3.9,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "pytest-asyncio>=0.23,<2",
+]
+
+[project.scripts]
+python-load-balancer = "load_balancer.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["load_balancer*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]

@@ -1,0 +1,30 @@
+services:
+  load-balancer:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+
+  backend1:
+    build: .
+    environment:
+      BACKEND_NAME: backend-1
+      PORT: "9001"
+    command: ["python", "examples/backend_server.py"]
+
+  backend2:
+    build: .
+    environment:
+      BACKEND_NAME: backend-2
+      PORT: "9002"
+    command: ["python", "examples/backend_server.py"]
+
+  backend3:
+    build: .
+    environment:
+      BACKEND_NAME: backend-3
+      PORT: "9003"
+    command: ["python", "examples/backend_server.py"]
